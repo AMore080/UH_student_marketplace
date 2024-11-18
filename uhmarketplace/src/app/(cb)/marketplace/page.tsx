@@ -1,8 +1,6 @@
-'use client'
-/*
 import { prisma } from "../../../../prisma/prisma";
-import { Card, Image, CardBody, CardFooter, Spacer } from '@nextui-org/react'
 import Link from "next/link";
+/*import { Card, Image, CardBody, CardFooter, Spacer } from '@nextui-org/react'
 */
 
 import Sidebar from '@/components/sideBar';
@@ -12,68 +10,9 @@ import SellerCarousel from '@/components/sellerCarousel';
 
 // https://next-auth.js.org/getting-started/client
 // Test the middleware by navigating to the /dashboard route
-export default function Marketplace() {
-  /*
+export default async function Marketplace() {
     const posts = await prisma.post.findMany();
-    return (
-      <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-          {posts.map((post) => (
-            <Link href={`/marketplace/${post.id}`} key={post.id}>
-              <Card shadow="sm" key={post.id}>
-                <CardBody className="overflow-visible p-0">
-                  <Image
-                    shadow="sm"
-                    radius="lg"
-                    width="100%"
-                    alt={post.title}
-                    className="w-full object-cover h-[140px]"
-                    src={post.imageUrl || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFA-3SEkzvkpZZxyJoONE7BQSnv7ruH8vNZQ&s"}
-                  />
-                  <CardFooter className="text-small justify-between">
-                      <b>{post.title}</b>
-                      <p>Created by: {post.authorName}</p>
-                  </CardFooter>
-                </CardBody>
-              </Card>
-              <Spacer></Spacer>
-            </Link>
-          ))}
-        </div>
-    );
-    */
 
-
-    const items = [
-      {
-        id: 1,
-        title: 'Sample Item 1',
-        description: 'This is a description of the sample item 1.',
-        imageUrl: 'https://via.placeholder.com/300',
-        price: '$29.99',
-      },
-      {
-        id: 2,
-        title: 'Sample Item 2',
-        description: 'This is a description of the sample item 2.',
-        imageUrl: 'https://via.placeholder.com/300',
-        price: '$39.99',
-      },
-      {
-        id: 3,
-        title: 'Sample Item 3',
-        description: 'This is a description of the sample item 3.',
-        imageUrl: 'https://via.placeholder.com/300',
-        price: '$49.99',
-      },
-      {
-        id: 4,
-        title: 'Sample Item 4',
-        description: 'This is a description of the sample item 4.',
-        imageUrl: 'https://via.placeholder.com/300',
-        price: '$19.99',
-      },
-    ];
-  
     const listSellers = [
       {
         id: 1,
@@ -122,15 +61,15 @@ export default function Marketplace() {
         <Sidebar/>
         <div className='flex flex-col w-full'>
         <h1 className='text-cougRed text-2xl underline decoration-4 underline-offset-8 p-4'>Nearby Listings</h1>
-          
-        <ItemCarousel items={items} />
+        
+        <ItemCarousel posts={posts} />
         <h1 className='text-cougRed text-2xl underline decoration-4 underline-offset-8 p-4'>Popular Items</h1>
-        <ItemCarousel items={items} />
+        <ItemCarousel posts={posts} />
         <h1 className='text-cougRed text-2xl underline decoration-4 underline-offset-8 p-4'>Top Sellers</h1>
           
-        <SellerCarousel sellers={listSellers} />
+        {/* <SellerCarousel sellers={listSellers} />
             
-        <DiscoverList items={items}/>
+        <DiscoverList items={posts}/> */}
         </div>
       </div>
       );

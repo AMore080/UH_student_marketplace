@@ -1,28 +1,22 @@
 // components/ItemCarousel.tsx
-
+'use client'
 import React, { useState } from 'react';
 import ItemCard from './itemCard';
-
+import { Post } from '@prisma/client';
 interface ItemCarouselProps {
-  items: {
-    id: number;
-    imageUrl: string;
-    title: string;
-    description: string;
-    price: string;
-    onAddToCart: () => void,
-  }[];
+    posts: Post[]
 }
 
-const ItemCarousel: React.FC<ItemCarouselProps> = ({ items }) => {
+const ItemCarousel: React.FC<ItemCarouselProps> = ({ posts }) => {
+  console.log("I am posts " + posts[0].title);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? posts.length - 1 : prevIndex - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === items.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === posts.length - 1 ? 0 : prevIndex + 1));
   };
 
   return (
@@ -31,7 +25,7 @@ const ItemCarousel: React.FC<ItemCarouselProps> = ({ items }) => {
       <div className="flex gap-8 pb-4 pt-2 overflow-x-auto scroll-smooth">
         {/* Using responsive classes for different screen sizes */}
         <div className="flex gap-4 sm:w-[calc(100%-48px)] md:w-[calc(100%-96px)] lg:w-[calc(100%-144px)] xl:w-[calc(100%-192px)]">
-          {items.map((item, index) => (
+          {posts.map((item, index) => (
             <div
               key={item.id}
               className={`flex-shrink-0 transition-transform transform ${
@@ -39,11 +33,11 @@ const ItemCarousel: React.FC<ItemCarouselProps> = ({ items }) => {
               }`}
             >
               <ItemCard
-                imageUrl={item.imageUrl}
+                id={item.id}
+                imageUrl={item?.imageUrl || ''}
                 title={item.title}
                 description={item.description}
-                price={item.price}
-                onAddToCart={item.onAddToCart}
+                price={item.price.toString()}
               />
             </div>
           ))}

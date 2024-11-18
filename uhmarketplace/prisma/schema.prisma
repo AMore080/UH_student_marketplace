@@ -42,6 +42,7 @@ model Post {
   imageUrl String?
   authorEmail String
   authorName String
+  price Decimal @db.Decimal(9,2)
 }
 
 enum Role {

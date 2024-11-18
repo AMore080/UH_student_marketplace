@@ -16,7 +16,7 @@ const Header = (props:props) => {
                     <h1 className="text-xl md:text-3xl lg:text-5xl font-bold drop-shadow-xl">COOGBAY</h1>
                     <h2 className="text-sm md:text-lg lg:text-xl font-bold drop-shadow-xl">FOR COUGARS, BY COUGARS</h2>
                 </div>
-                <nav>
+                <nav className="grid grid-rows-1 grid-flow-col gap-1">
                     {props.session ? (
                         <a href="/api/auth/signout" className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-lg">Sign Out</a>
                     ) : (

@@ -10,12 +10,6 @@ const config: Config = {
     colors: {
       'uhRed': '#C8102E'
     },
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
-    },
   },
   plugins: [],
 };

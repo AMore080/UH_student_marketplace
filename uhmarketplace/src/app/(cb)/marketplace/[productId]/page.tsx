@@ -26,6 +26,7 @@ export default async function Product({
         }
 
     } catch (error) {
+        console.log(error);
         return <h2>Wrong turn partner.</h2>
     }
 }
